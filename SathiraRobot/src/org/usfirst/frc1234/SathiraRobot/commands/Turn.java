@@ -1,6 +1,7 @@
 package org.usfirst.frc1234.SathiraRobot.commands;
 
 import org.usfirst.frc1234.SathiraRobot.Robot;
+import org.usfirst.frc1234.SathiraRobot.utilities.Constants;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -14,7 +15,7 @@ public class Turn extends Command{
 	
 	public Turn(double angle){
 		requires(Robot.driveTrain);
-		pid = new PIDController(-0.5,0,0,new PIDSource(){
+		pid = new PIDController(Constants.kP_Turn,Constants.kI_Turn,Constants.kD_Turn,new PIDSource(){
 			public double pidGet(){
 				return Robot.driveTrain.getHeading();
 			}
@@ -25,7 +26,7 @@ public class Turn extends Command{
 			}
 		});
 		
-		pid.setAbsoluteTolerance(0.015);
+		pid.setAbsoluteTolerance(Constants.tolerence_Turn);
 		pid.setSetpoint(angle);
 	}
 	

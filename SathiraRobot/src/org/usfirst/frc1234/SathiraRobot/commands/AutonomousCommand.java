@@ -13,6 +13,8 @@ package org.usfirst.frc1234.SathiraRobot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+
+import org.usfirst.frc1234.SathiraRobot.commands.DriveStraight;
 import org.usfirst.frc1234.SathiraRobot.Robot;
 
 /**
@@ -29,7 +31,11 @@ public class  AutonomousCommand extends CommandGroup {
     	addParallel(new SetWristSetPoint(-50));
     	addParallel(new CloseClaw());
     	
+    	addSequential(new PrepareToPickup());
     	addSequential(new Turn(175));
-    	addSequential(new Turn(63));
+    	addSequential(new Turn(48));
+    	addSequential(new DriveStraight(-1.4));
+    	addSequential(new DriveStraight(1));
+    	addSequential(new Pickup());
     }
 }

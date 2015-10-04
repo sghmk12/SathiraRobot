@@ -74,7 +74,7 @@ public class DriveTrain extends Subsystem {
     	leftEncoder.reset();
     	rightEncoder.reset();
     }
-    public double getDIstance(){
+    public double getDistance(){
     	return (leftEncoder.getDistance()+rightEncoder.getDistance())/2;
     }
     public double getDistanceToObstacle(){
